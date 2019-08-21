@@ -5,6 +5,26 @@
     <title></title>
   </head>
   <body>
+
+    <nav>
+      <div class="">
+        <a href="{% url 'HomePage' %}">Star Social</a>
+
+        <ul>
+          {% if user.is_authenticated %}
+          <li> <a href="#">Post</a> </li>
+          <li> <a href="#">Groups</a> </li>
+          <li> <a href="#">Create Group</a> </li>
+          <li> <a href="{% url 'Accounts:logout' %}">Log Out</a> </li>
+          {% else %}
+          <li> <a href="#">Groups</a> </li>
+          <li> <a href="{% url 'Accounts:login' %}">Log In</a> </li>
+          <li> <a href="{% url 'Accounts:signup' %}">Sign Up</a> </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
     {% block content%}
 
     {% endblock content %}
