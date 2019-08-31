@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HomePage.as_view(), name='HomePage'),
     path('accounts/', include('Accounts.urls', namespace='Accounts')),
-    path('groups/', include('Accounts.urls', namespace='Groups')),
-    path('accounts/', include('django.contrib.auth.urls'))
+    path('groups/', include('Groups.urls', namespace='Groups')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('posts/', include('Posts.urls', namespace='Posts')),
 ]

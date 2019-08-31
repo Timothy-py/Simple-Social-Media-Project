@@ -1,4 +1,4 @@
-# GROUPS URL.PY FILE
+# GROUPS APP URL.PY FILE
 
 from django.urls import path
 from . import views
