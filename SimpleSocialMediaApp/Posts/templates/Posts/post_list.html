@@ -1,0 +1,30 @@
+{% extends "posts/post_base.html" %}
+
+{% block pre_post_content %}
+  <div>
+    {% if request.user.is_authenticated %}
+      {% for member_group in get_user_groups %}
+        <li>
+          <a href="{% url 'Groups:group_detail' slug=member_group.group.slug %}">{{member_group}}</a>
+        </li>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <div>
+    <h5>All Groups</h5>
+    {% for ohter_group in get_other_groups %}
+      <li>
+        <a href="{% url "Groups:group_detail" slug=other_group.slug %}">{{other_group}}</a>
+      </li>
+    {% endfor %}
+  </div>
+{% endblock pre_post_content %}
+
+{% block post_content %}
+  <div>
+    {% for post in post_list %}
+      {% include "Posts/_post.html" %}
+    {% endfor %}
+  </div>
+{% endblock post_content %}

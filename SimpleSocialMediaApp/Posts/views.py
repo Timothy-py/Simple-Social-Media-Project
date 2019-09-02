@@ -28,7 +28,7 @@ class UserPosts(ListView):
         else:
             return self.post_user.posts.all
 
-    def get_context_data(self, **kwargs):           # *****
+    def get_context_data(self, **kwargs):           # what is this method?
         context = super().get_context_data(**kwargs)
         context['post_user'] = self.post_user
         return context
@@ -46,6 +46,7 @@ class PostDetail(SelectRelatedMixin, DetailView):
 class CreatePost(LoginRequiredMixin,SelectRelatedMixin,CreateView):
     fields = ('message', 'group')
     model = models.Post
+    # form_class =
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
